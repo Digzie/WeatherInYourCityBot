@@ -1,5 +1,10 @@
 import requests
-API_WEATHER = "" #https://home.openweathermap.org/api_keys
+import os
+from dotenv import load_dotenv
+load_dotenv()
+API = os.getenv("OPENWEATHERMAP")
+API_WEATHER = API
+
 def Weather(city: str) -> dict:
     url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_WEATHER}&units=metric"
     response = requests.get(url).json()
